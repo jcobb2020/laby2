@@ -21,6 +21,7 @@ public class UnboundedMap implements IWorldMap{
         for (int i = 0; i < cars.size(); i++) {
             Car currentCar = cars.get(i);
             if (currentCar.getPosition().equals(position)) {
+
                 return true;
             }
         }
