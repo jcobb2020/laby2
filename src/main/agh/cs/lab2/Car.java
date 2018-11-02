@@ -29,7 +29,6 @@ public class Car {
     public Car(IWorldMap map) {
         this.map = map;
         this.position = new Position(2,2);
-
     }
 
     public Car(IWorldMap map, int x, int y) {
@@ -41,13 +40,15 @@ public class Car {
     public static void main(String[] args) {
         MoveDirection[] directions = new OptionsParser().parse(args);
         List<HayStack> hayStacks = new ArrayList<>();
-         /*hayStacks.add(new HayStack(new Position(-4, -4)));
+         hayStacks.add(new HayStack(new Position(-4, -4)));
         hayStacks.add(new HayStack(new Position(7, 7)));
-        hayStacks.add(new HayStack(new Position(3, 6)));
-        hayStacks.add(new HayStack(new Position(2, 0))); */
+        hayStacks.add(new HayStack(new Position(3, 3)));
+        hayStacks.add(new HayStack(new Position(2, 0)));
 
 
-        IWorldMap map = new RectangularMap(10,5);
+        IWorldMap map = new UnboundedMap(hayStacks);
+        System.out.println(map.toString());
+
         map.place(new Car(map));
         map.place(new Car(map,3,4));
         map.run(directions);

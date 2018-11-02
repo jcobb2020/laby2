@@ -24,7 +24,7 @@ public class UnboundedMap implements IWorldMap{
                 return true;
             }
         }
-        for (int i = 0; i < cars.size(); i++) {
+        for (int i = 0; i < hayStacks.size(); i++) {
             HayStack currentHS = hayStacks.get(i);
             if (currentHS.getPosition().equals(position)) {
                 return true;
@@ -85,24 +85,19 @@ public class UnboundedMap implements IWorldMap{
     }
 
     public String toString (){
-        int minX, minY, maxX, maxY;
-        minX = maxX = this.cars.get(0).getPosition().x;
-        minY = maxY = this.cars.get(0).getPosition().y;
+        Position lowerLeft = new Position(0,0);
+        Position upperRight = new Position(0,0);
         for(Car auto : this.cars){
-            if(auto.getPosition().x<minX) minX = auto.getPosition().x;
-            if(auto.getPosition().x>maxX) maxX = auto.getPosition().x;
-            if(auto.getPosition().y<minY) minY = auto.getPosition().y;
-            if(auto.getPosition().y>maxY) maxY = auto.getPosition().y;
+            lowerLeft=lowerLeft.lowerLef(auto.getPosition());
+            upperRight=upperRight.upperRight(auto.getPosition());
         }
         for(HayStack hs : this.hayStacks){
-            if(hs.getPosition().x<minX) minX = hs.getPosition().x;
-            if(hs.getPosition().x>maxX) maxX = hs.getPosition().x;
-            if(hs.getPosition().y<minY) minY = hs.getPosition().y;
-            if(hs.getPosition().y>maxY) maxY = hs.getPosition().y;
+            lowerLeft=lowerLeft.lowerLef(hs.getPosition());
+            upperRight=upperRight.upperRight(hs.getPosition());
         }
 
         MapVisualizer visualizer = new MapVisualizer(this);
-        return visualizer.draw(new Position(-10, -10), new Position(10, 10));
+        return visualizer.draw(lowerLeft, upperRight);
     }
 }
 
