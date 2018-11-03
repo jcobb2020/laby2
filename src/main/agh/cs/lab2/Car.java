@@ -40,36 +40,21 @@ public class Car {
     public static void main(String[] args) {
         MoveDirection[] directions = new OptionsParser().parse(args);
         List<HayStack> hayStacks = new ArrayList<>();
-         hayStacks.add(new HayStack(new Position(-4, -4)));
+        hayStacks.add(new HayStack(new Position(-4, -4)));
         hayStacks.add(new HayStack(new Position(7, 7)));
         hayStacks.add(new HayStack(new Position(3, 3)));
         hayStacks.add(new HayStack(new Position(2, 0)));
 
 
-        IWorldMap map = new UnboundedMap(hayStacks);
-        System.out.println(map.toString());
+        UnboundedMap map = new UnboundedMap(hayStacks);
+//        System.out.println(map.toString());
 
         map.place(new Car(map));
         map.place(new Car(map,3,4));
         map.run(directions);
-        /*String[] dirs ={"f", "xd", "l", "forward", "f"};
-        Car lexus = new Car();
-        System.out.println(lexus.toString());
-
-        MoveDirection[] moveDirs = OptionsParser.parse(dirs);
-        for(MoveDirection direction : moveDirs){
-            lexus.move(direction);
-        }
-        System.out.println(lexus.toString());
-        */
 
 
-        /*lexus.move(MoveDirection.RIGHT);
-        lexus.move(MoveDirection.FORWARD);
-        lexus.move(MoveDirection.FORWARD);
-        lexus.move(MoveDirection.FORWARD);
-        System.out.println(lexus.toString())*/
-        ;
+
     }
 
     public void move(MoveDirection dir) {

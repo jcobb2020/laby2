@@ -29,6 +29,7 @@ public class MapVisualizer {
      * @param upperRight The upper right corner of the region that is drawn.
      * @return String representation of the selected region of the map.
      */
+
     public String draw(Position lowerLeft, Position upperRight) {
         StringBuilder builder = new StringBuilder();
         for (int i = upperRight.y + 1; i >= lowerLeft.y - 1; i--) {
