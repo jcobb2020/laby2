@@ -9,5 +9,4 @@ abstract class AbstractWorldObject {
     public Position getPosition(){
         return this.position;
     }
-
 }
