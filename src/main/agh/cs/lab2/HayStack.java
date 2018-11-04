@@ -1,14 +1,9 @@
 package agh.cs.lab2;
 
-public class HayStack {
-    private Position position;
+public class HayStack extends AbstractWorldObject {
 
-    public HayStack(Position pos) {
-        this.position = pos;
-    }
-
-    public Position getPosition(){
-        return this.position;
+    public HayStack(Position pos){
+        this.position=pos;
     }
     public String toString(){
         return "H";

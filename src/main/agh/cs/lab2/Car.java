@@ -3,9 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 //import com.sun.java.util.jar.pack.Instruction;
 
-public class Car {
+public class Car extends AbstractWorldObject {
     private MapDirection direction = MapDirection.NORTH;
-    private Position position;
     private IWorldMap map;
 
     public String toString() {
@@ -99,12 +98,6 @@ public class Car {
             this.position = newPosition;
         }
     }
-
-    public Position getPosition() {
-        return this.position;
-    }
-
-
 }
 
 
