@@ -73,6 +73,6 @@ public class UnboundedMapTest {
         hayStacks.add(new HayStack(new Position(3,3)));
         assertTrue(map.objectAt(new Position(1,1)).toString().equals("N"));
         assertTrue(map.objectAt(new Position(3,3)).toString().equals("H"));
-
     }
+
 }
