@@ -30,6 +30,7 @@ public class UnboundedMapTest {
         assertTrue(map.canMoveTo(new Position(88, 88)));
         assertFalse(map.canMoveTo(new Position(5, 5)));
         assertFalse(map.canMoveTo(new Position(3, 3)));
+        assertTrue(map.canMoveTo(new Position(77, 88)));
     }
 
     @Test
