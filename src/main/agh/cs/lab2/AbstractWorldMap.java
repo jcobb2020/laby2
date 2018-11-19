@@ -2,7 +2,7 @@ package agh.cs.lab2;
 
 import java.util.*;
 
-abstract class AbstractWorldMap implements IWorldMap {
+abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
     protected List<Car> cars = new ArrayList<>();
     protected Map<Position, Car> carHashMap = new HashMap<>();
     public boolean isOccupied(Position position) {
@@ -44,22 +44,21 @@ abstract class AbstractWorldMap implements IWorldMap {
     public void run(MoveDirection[] directions) {
 
         int movesNumber = directions.length;
-        int carNum=this.cars.size();
+        int carNum=this.carHashMap.size();
         int currentCarNum;
         Car currentCar;
         for(int i=0; i<movesNumber; i++){
             currentCarNum=i%carNum;
-            currentCar = cars.get(currentCarNum);
+            currentCar = carHashMap.get(currentCarNum);
             int carPositionHash=currentCar.getPosition().hashCode();
             currentCar.move(directions[i]);
             carHashMap.remove(carPositionHash);
             carHashMap.put(currentCar.getPosition(), currentCar);
-
-           /* System.out.println("currentCar=" + currentCarNum);
-            System.out.println(currentCar.getPosition().x);
-            System.out.println(currentCar.getPosition().y);
-            System.out.println(currentCar.toString());
-            System.out.println(this.toString()); */
+//            System.out.println("currentCar=" + currentCarNum);
+//            System.out.println(currentCar.getPosition().x);
+//            System.out.println(currentCar.getPosition().y);
+//            System.out.println(currentCar.toString());
+//            System.out.println(this.toString());
         }
         System.out.println(this.toString());
     }
@@ -80,4 +79,9 @@ abstract class AbstractWorldMap implements IWorldMap {
         return visualizer.draw(lowerLeft, upperRight);
     }
 
+    public void positionChange(Position oldPosition, Position newPosition){
+        Car auto = this.carHashMap.get(oldPosition);
+        this.carHashMap.remove(oldPosition);
+        this.carHashMap.put(newPosition, auto);
+    }
 }

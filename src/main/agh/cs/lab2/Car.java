@@ -6,7 +6,7 @@ import java.util.List;
 public class Car extends AbstractWorldObject {
     private MapDirection direction = MapDirection.NORTH;
     private IWorldMap map;
-
+    public ArrayList<IPositionChangeObserver> Observers;
     public String toString() {
         switch (this.direction) {
             case SOUTH:
@@ -96,6 +96,18 @@ public class Car extends AbstractWorldObject {
         }
         if (this.map.canMoveTo(newPosition)) {   // new chceking move avability
             this.position = newPosition;
+        }
+    }
+
+    public void addObserver(IPositionChangeObserver observer){
+        this.Observers.add(observer);
+    }
+    public void removeObserver(IPositionChangeObserver observer){
+        this.Observers.remove(observer);
+    }
+    public void positionChanged(Position oldPosition,Position newPosition){
+        for(IPositionChangeObserver observer : this.Observers){
+
         }
     }
 }
