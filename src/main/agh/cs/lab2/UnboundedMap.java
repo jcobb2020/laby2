@@ -1,6 +1,6 @@
 package agh.cs.lab2;
 
-import org.omg.PortableInterceptor.ObjectReferenceFactory;
+//import org.omg.PortableInterceptor.ObjectReferenceFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UnboundedMap extends AbstractWorldMap{
 
-    List<HayStack> hayStacks = new ArrayList<>();
+    private List<HayStack> hayStacks = new ArrayList<>();
    // List<Car> cars = new ArrayList<>();
 
     public UnboundedMap(List<HayStack> hayS) {

@@ -36,25 +36,25 @@ public class Car extends AbstractWorldObject {
     }
 
 
-    public static void main(String[] args) {
-        MoveDirection[] directions = new OptionsParser().parse(args);
-        List<HayStack> hayStacks = new ArrayList<>();
-        hayStacks.add(new HayStack(new Position(-4, -4)));
-        hayStacks.add(new HayStack(new Position(7, 7)));
-        hayStacks.add(new HayStack(new Position(3, 3)));
-        hayStacks.add(new HayStack(new Position(2, 0)));
-
-
-        UnboundedMap map = new UnboundedMap(hayStacks);
-//        System.out.println(map.toString());
-
-        map.place(new Car(map));
-        map.place(new Car(map,3,4));
-        map.run(directions);
-
-
-
-    }
+//    public static void main(String[] args) {
+//        MoveDirection[] directions = new OptionsParser().parse(args);
+//        List<HayStack> hayStacks = new ArrayList<>();
+//        hayStacks.add(new HayStack(new Position(-4, -4)));
+//        hayStacks.add(new HayStack(new Position(7, 7)));
+//        hayStacks.add(new HayStack(new Position(3, 3)));
+//        hayStacks.add(new HayStack(new Position(2, 0)));
+//
+//
+//        UnboundedMap map = new UnboundedMap(hayStacks);
+////        System.out.println(map.toString());
+//
+//        map.place(new Car(map));
+//        map.place(new Car(map,3,4));
+//        map.run(directions);
+//
+//
+//
+//    }
 
     public void move(MoveDirection dir) {
 

@@ -62,7 +62,6 @@ public class Position {
             y2=pos.y;
         }
         return new Position(x2,y2);
-
     }
 
     public Position add(Position pos1){
@@ -89,8 +88,11 @@ public class Position {
        }
        return false;
     }
-
-
-
-
+    @Override
+    public int hashCode(){
+        int hash = 13;
+        hash += this.x *31;
+        hash += this.y *17;
+        return hash;
+    }
 }

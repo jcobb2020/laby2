@@ -1,6 +1,6 @@
 package agh.cs.lab2;
 
-import javafx.geometry.Pos;
+//import javafx.geometry.Pos;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

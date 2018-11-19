@@ -1,11 +1,10 @@
 package agh.cs.lab2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 abstract class AbstractWorldMap implements IWorldMap {
     protected List<Car> cars = new ArrayList<>();
-
+    protected Map<Position, Car> carHashMap = new HashMap<>();
     public boolean isOccupied(Position position) {
         for (int i = 0; i < cars.size(); i++) {
             Car currentCar = cars.get(i);
@@ -26,10 +25,12 @@ abstract class AbstractWorldMap implements IWorldMap {
     public boolean place(Car car) {
         if (this.canMoveTo(car.getPosition())) {
             cars.add(car);
+            carHashMap.put(car.getPosition(), car);
             return true;
         }
-        System.out.println("placeError");
-        return false;
+        else{
+            throw new IllegalArgumentException(car.getPosition().toString() + " is occupied");
+        }
     }
     public Object objectAt(Position pos) {
         for (Car car : this.cars) {
@@ -49,7 +50,11 @@ abstract class AbstractWorldMap implements IWorldMap {
         for(int i=0; i<movesNumber; i++){
             currentCarNum=i%carNum;
             currentCar = cars.get(currentCarNum);
+            int carPositionHash=currentCar.getPosition().hashCode();
             currentCar.move(directions[i]);
+            carHashMap.remove(carPositionHash);
+            carHashMap.put(currentCar.getPosition(), currentCar);
+
            /* System.out.println("currentCar=" + currentCarNum);
             System.out.println(currentCar.getPosition().x);
             System.out.println(currentCar.getPosition().y);

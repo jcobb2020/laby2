@@ -1,12 +1,12 @@
 package agh.cs.lab2;
 
-public class OptionsParser {
 
+public class OptionsParser {
     public static MoveDirection[] parse(String[] args){
         MoveDirection[] dirs = new MoveDirection[args.length];
         int count = 0;
         for (String argument : args){
-
+           // IllegalArgumentException exct = new IllegalArgumentException(argument + "is not legal move specifiction");
             if(argument.equalsIgnoreCase("l") || argument.equalsIgnoreCase("left")){
                 dirs[count]=MoveDirection.LEFT;
             }
@@ -21,8 +21,9 @@ public class OptionsParser {
 
             }
             else {
-                dirs[count]=MoveDirection.WRONG;
+                throw new IllegalArgumentException(argument + " is not legal move specifiction");
             }
+
             count ++;
 
         }
