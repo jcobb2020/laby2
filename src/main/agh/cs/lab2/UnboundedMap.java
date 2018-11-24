@@ -4,6 +4,7 @@ package agh.cs.lab2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 public class UnboundedMap extends AbstractWorldMap{
@@ -73,10 +74,8 @@ public class UnboundedMap extends AbstractWorldMap{
 //    }
 
     public Object objectAt(Position pos){
-        for(Car car : this.cars){
-            if (car.getPosition().equals(pos)){
-                return car;
-            }
+        if (carHashMap.get(pos)!=null){
+            return carHashMap.get(pos);
         }
         for(HayStack hS : this.hayStacks){
             if (hS.getPosition().equals(pos)){
@@ -89,9 +88,10 @@ public class UnboundedMap extends AbstractWorldMap{
     public String toString (){
         Position lowerLeft = new Position(0,0);
         Position upperRight = new Position(0,0);
-        for(Car auto : this.cars){
-            lowerLeft=lowerLeft.lowerLef(auto.getPosition());
-            upperRight=upperRight.upperRight(auto.getPosition());
+        Set<Position> keys = carHashMap.keySet();
+        for (Position p : keys) {
+            lowerLeft = lowerLeft.lowerLef(p);
+            upperRight = upperRight.upperRight(p);
         }
         for(HayStack hs : this.hayStacks){
             lowerLeft=lowerLeft.lowerLef(hs.getPosition());
